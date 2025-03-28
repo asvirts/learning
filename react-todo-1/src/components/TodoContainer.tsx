@@ -10,14 +10,18 @@ export default function TodoContainer() {
     setTodos([...todos, { id: Date.now(), title: title, completed: false }])
   }
 
-  function handleDeleteTodo(id: number) {
-    setTodos(todos.filter((todo) => todo.id !== id))
+  function handleToggleComplete(id: number) {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    )
   }
 
   return (
     <div>
       <h1>Todo List</h1>
-      <TodoList todos={todos} onDeleteTodo={handleDeleteTodo} />
+      <TodoList todos={todos} onToggleComplete={handleToggleComplete} />
       <CreateTodo onAddTodo={handleAddTodo} />
     </div>
   )

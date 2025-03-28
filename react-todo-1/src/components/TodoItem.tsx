@@ -1,7 +1,6 @@
 import { Todo } from "../types/types"
 interface TodoItemProps {
   todo: Todo
-  onDeleteTodo: (id: number) => void
   onToggleComplete: (id: number) => void
 }
 
